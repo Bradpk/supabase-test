@@ -1,7 +1,7 @@
 "use client"
-import Image from "next/image";
 import React, { useEffect, useState } from 'react';
 import supabase from '../api/supabase'
+import styles from '../components/test.module.css'
 
 export default function Test() {
 
@@ -12,7 +12,7 @@ export default function Test() {
       const { data, error } = await supabase
         .from('test')
         .select('*');
-      if (error) console.error('Error fetching todos:', error.message);
+      if (error) console.error('Error fetching test:', error.message);
       setTest(data || []);
     };
 
@@ -23,7 +23,7 @@ export default function Test() {
   return (
     <div>
       <h1>Test</h1>
-      <ul>
+      <ul className={styles.color}>
         {test.map(test => (
           <li key={test.id}>{test.title}</li>
         ))}
